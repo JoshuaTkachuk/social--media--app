@@ -1,0 +1,59 @@
+.profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.like-delete{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.delete{
+    margin-left: 10px;
+    text-decoration: none;
+    color: red;
+}
+.delete:hover{
+    color: rgb(136, 0, 0)
+}
+.both-btns{
+    display: flex;
+}
+.update-name-btn, .liked-posts-btn, .follow-btn{
+    margin: 5px;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(126, 55, 148);
+    color: white;
+    width: 150px;
+    border: none;
+    border-radius: 25px;
+    height: 30px;
+}
+.profile-name{
+    font-size: 70px;
+    margin: 0;
+}
+.followers-following{
+    text-decoration: none;
+    color: rgb(126, 55, 148) ;
+}
+.sticky-username{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    position:sticky;
+    top: 80px;
+    background-color: rgb(221, 221, 221);
+}
+.name-following{
+    display: flex;
+    align-items: center;
+}
+.following-container{
+    display: flex;
+    flex-direction: column;
+    width: 125px;
+    align-items: flex-end;
+}

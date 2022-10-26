@@ -1,0 +1,31 @@
+.navbar-wrapper{
+    width: 100vw;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    max-height: 80px;
+}
+.navbar-item{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+.navbar-item-active{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color:rgb(221, 221, 221);
+}
+.navbar-item:hover,.navbar-item-active:hover{
+    background-color:rgb(221, 221, 221);
+    color: black;
+}
+.icon{
+    margin-right: 5px;
+}
