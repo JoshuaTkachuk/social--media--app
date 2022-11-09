@@ -35,14 +35,14 @@ const Navbar=(props)=>{
             console.log(err)
         })
     }
-
+    
     return(
     <div className="navbar-wrapper">
-        <Link className={location == "home"? "navbar-item-active" : "navbar-item"} to={`/home`}><FaHome size={40} color={"black"} className="icon"/> Home</Link>
-        <Link className={location == "post"? "navbar-item-active" : "navbar-item"} to={`/newPost`}><BiPlus size={40} color={"black"} className="icon"/>Post</Link>
-        <Link className={location == "search"? "navbar-item-active" : "navbar-item"} to={`/search`}><ImSearch size={30} color={"black"} className="icon"/>Search</Link>
-        <Link className={location == "profile"? "navbar-item-active" : "navbar-item"} to={`/myProfile`}><Avatar color={"rgb(126, 55, 148)"} size="50" round={true} name={`${loggedUser.firstName} ${loggedUser.lastName}`} className="icon"/> Profile</Link>
-        <Link className="navbar-item" to={``} onClick={logout}><BiLogOut size={40} color={"black"} className="icon"/>Logout</Link>
+        <Link  className={location == "home"? "navbar-item-active" : "navbar-item"} to={`/home`}><FaHome  size={40} className="icon"/> Home</Link>
+        <Link  className={location == "post"? "navbar-item-active" : "navbar-item"} to={`/newPost`}><BiPlus size={40} className="icon"/>Post</Link>
+        <Link  className={location == "search"? "navbar-item-active" : "navbar-item"} to={`/search`}><ImSearch size={30} className="icon"/>Search</Link>
+        <Link  className={location == "profile"? "navbar-item-active" : "navbar-item"} to={`/myProfile`}><Avatar color={"rgb(126, 55, 148)"} size="50" round={true} name={`${loggedUser.firstName} ${loggedUser.lastName}`} className="icon"/> Profile</Link>
+        <Link  className="navbar-item" to={``} onClick={logout}><BiLogOut size={40}  className="icon"/>Logout</Link>
     </div>
 )
 }

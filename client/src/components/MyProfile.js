@@ -47,7 +47,8 @@ const MyProfile =()=>{
 return<div className="profile-wrapper">
     <Navbar location={"profile"}/>
         <div className="profile">
-            <div className="sticky-username">
+            <div className="myProfile-wrapper">
+            <div className="top-username">
                 <div className="name-following">
                     <h1 className="profile-name">{user.userName}</h1>
                     <div className="following-container">
@@ -60,30 +61,31 @@ return<div className="profile-wrapper">
                     <button className="liked-posts-btn" onClick={(e)=>navigate(`/likedPosts`)}>liked posts</button>
                 </div>
             </div>
-            {
-                posts.length > 0 ?
-                posts.map((item,idx)=>{
-                    return<div key={idx} className="container">
-                            <Link to={`/post/${item._id}`} className="post-wrapper">
-                                <div className="post">
-                                <Link className="" to={`/myProfile`}><Avatar color={"rgb(126, 55, 148)"} round={true} name={`${item.createdBy.firstName} ${item.createdBy.lastName}`}/></Link>
-                                    <div className="post-inside">
-                                        <div className="user-name">
-                                            <div style={{marginRight: 5}}>{item.createdBy.firstName} {item.createdBy.lastName}</div>
-                                            <Link to={`/myProfile`} className="handle">@{item.createdBy.userName}</Link>
-                                        </div>
-                                        <div className="content">{item.content}</div>
-                                        <div className="like-delete">
-                                            <p className="likes">{item.numLikes} likes</p>
-                                            <Link to="/myprofile" className="delete" onClick={(e)=> deletePost(item._id) }>delete</Link>
+                {
+                    posts.length > 0 ?
+                    posts.map((item,idx)=>{
+                        return<div key={idx} className="container">
+                                <Link to={`/post/${item._id}`} className="post-wrapper">
+                                    <div className="post">
+                                    <Link className="" to={`/myProfile`}><Avatar color={"rgb(126, 55, 148)"} round={true} name={`${item.createdBy.firstName} ${item.createdBy.lastName}`}/></Link>
+                                        <div className="post-inside">
+                                            <div className="user-name">
+                                                <div style={{marginRight: 5}}>{item.createdBy.firstName} {item.createdBy.lastName}</div>
+                                                <Link to={`/myProfile`} className="handle">@{item.createdBy.userName}</Link>
+                                            </div>
+                                            <div className="content">{item.content}</div>
+                                            <div className="like-delete">
+                                                <p className="likes">{item.numLikes} likes</p>
+                                                <Link to="/myprofile" className="delete" onClick={(e)=> deletePost(item._id) }>delete</Link>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </Link>
-                    </div>
-                })
-                :<p style={{marginTop: "25vh"}}>No Posts</p>
-            }
+                                </Link>
+                        </div>
+                    })
+                    :<p style={{marginTop: "25vh", textAlign: "center", color:"white"}}>No Posts</p>
+                }
+            </div>
         </div>
 
 </div>

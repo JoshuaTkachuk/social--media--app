@@ -2,6 +2,7 @@ import axios from 'axios'
 import React,{useState, useEffect} from 'react'
 import {useNavigate} from "react-router-dom";
 import Navbar from "./Navbar";
+import '../styles/UpdateForm.css'
 
 const UserNameForm=()=>{
     const [name,setName] = useState('')
@@ -33,13 +34,13 @@ const UserNameForm=()=>{
             setError(err.response.data.errors.userName.message)
         })
     }
-    return<div className="d-flex justify-content-center">
+    return<div>
         <Navbar/>
-        <div className='d-flex flex-column align-items-center' style={{width: "800px", marginRight: 140}}>
-            <h1 style={{width: 700}} className='text-white border-bottom mt-2 border-3 text-center p-2'>update username</h1>
-            <form className='d-flex flex-column align-items-center border border-3 p-3 mt-5 bg-primary ' style={{borderRadius: 25}} onSubmit={handleSubmit}>
-                <input style={{borderRadius: 25}} onChange={(e)=>setNewName(e.target.value)} value={newName} placeholder={name}/>
-                <button style={{borderRadius: 25}} className='mt-2' type='submit'>submit</button>
+        <div className='wrapper'>
+            <h1 className='title'>update username</h1>
+            <form className='username-form'  onSubmit={handleSubmit}>
+                <input className='update-name-input' onChange={(e)=>setNewName(e.target.value)} value={newName} placeholder={name}/>
+                <button  className='submit-name' type='submit'>submit</button>
             </form>
             {
                 error ?

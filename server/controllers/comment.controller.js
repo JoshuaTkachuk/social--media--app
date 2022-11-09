@@ -16,7 +16,7 @@ module.exports={
             }))
             .catch((err)=>{
                 console.log(err)
-                res.status(400).json({error: "please enter a comment"});
+                res.status(400).json(err);
             })
     },
     findAllComments:(req,res)=>{

@@ -3,10 +3,11 @@
     flex-direction: column;
     align-items: center;
 }
-.users-wrapper{
+.users-outer-wrapper{
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    max-height:calc(100vh - 236px);
+    overflow-y: scroll;
 }
 .search-bar{
     font-family: 'Poppins', sans-serif;
@@ -28,9 +29,10 @@
     align-items: center;
     position:sticky;
     top: 80px;
-    background-color: rgb(221, 221, 221);
+    background-color:initial;
 }
 .user{
+    width: 400px;
     display: flex;
     text-decoration: none;
     text-align: left;

@@ -9,6 +9,12 @@
     flex-direction: column-reverse;
     margin-top: 50px;
 }
+.post-feed-wrapper{
+    display: flex;
+    flex-direction: column;
+    max-height:calc(100vh - 80px);
+    overflow-y: scroll;
+}
 .container{
     margin-top: 30px;
 }
@@ -18,7 +24,7 @@
     justify-content: space-between;
 }
 .post-wrapper{
-    background-color: black;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 100%);
     padding: 25px;
     border:none;
     border-radius: 25px;

@@ -6,6 +6,7 @@ import {Link, useNavigate} from "react-router-dom";
 import Avatar from 'react-avatar';
 import {FcLike, FcLikePlaceholder} from "react-icons/fc"
 import {BiMailSend} from "react-icons/bi"
+import "../styles/post.css"
 
 
 const Post=()=>{
@@ -24,15 +25,9 @@ const Post=()=>{
         axios.get(`http://localhost:8000/api/post/${postId}`, {withCredentials: true})
             .then((result)=>{
                 setPost(result.data)
-                console.log(result.data.numLikes)
+                setPostUser(result.data.createdBy)
+                console.log(result.data)
                 setLikeNum(result.data.numLikes)
-                axios.get(`http://localhost:8000/api/findUserUserName/${result.data.createdBy.userName}`,{withCredentials: true})
-                    .then((result)=>{
-                        setPostUser(result.data)
-                    })
-                    .catch((err)=>{
-                        console.log(err)
-                    })
                 axios.get(`http://localhost:8000/api/commentsByPost/${postId}`, {withCredentials: true})
                     .then((result)=>{
                         console.log(result.data)
@@ -72,8 +67,8 @@ const Post=()=>{
                 console.log(result)
             })
             .catch((err)=>{
-                console.log(err.response.data.error)
-                setError(err.response.data.error)
+                console.log(err.response.data.errors.content.message)
+                setError(err.response.data.errors.content.message)
             })
     }
     const likePost=(e)=>{
@@ -114,66 +109,65 @@ const Post=()=>{
         })
 
     }
-    return<div className="d-flex justify-content-center" style={{marginRight:140}}>
+    return<div >
         <Navbar/>
-        <div className="mt-2 d-flex flex-column align-items-center" style={{width:800}}>
-            <div className="d-flex flex-column align-items-start p-3 mt-5 border border-solid border-3" style={{width:550, borderRadius:"20px"}}>
-                <div style={{width:"500px", borderRadius:"20px"}} className="d-flex flex-column  align-items-top align-self-center p-3 pb-0">
-                    {
-                        postUser.userName === loggedUser.userName?
-                        <div style={{fontSize:"13px"}} className="d-flex">
-                            <Link to={`/myProfile`}><Avatar color={"rgb(126, 55, 148)"} size="50" round={true} name={`${loggedUser.firstName} ${loggedUser.lastName}`} /></Link>
-                            <Link to={`/myProfile`} className="pt-3 ps-2 text-primary text-decoration-none">@{postUser.userName}</Link>
-                        </div>
-                            :
-                        <div style={{fontSize:"13px"}} className="d-flex">
-                            <Link to={`/user/${postUser.userName}`}><Avatar color={"rgb(126, 55, 148)"} size="50" round={true} name={`${postUser.firstName} ${postUser.lastName}`} /></Link>
-                            <Link to={`/user/${postUser.userName}`} className="pt-3 ps-2 text-primary text-decoration-none">@{postUser.userName}</Link>
-                        </div>
-                    }
-                    <div style={{fontSize:"30px"}} className="d-flex align-self-start text-break text-white ps-2">{post.content}</div>
-                </div>
-                <div style={{width: "500px"}} className="d-flex align-items-center justify-content-end ">
-                    <div className="text-primary">{likeNum} likes</div>
-                    {
-                        likeStatus === false?
-                            <FcLikePlaceholder size={35} onClick={likePost} className="ms-3">like post</FcLikePlaceholder>
-                            :
-                            <FcLike size={35} onClick={unlikePost} className="ms-3">unlike Post</FcLike>
-                    }
-                </div>
-            </div>
-            <div className="d-flex flex-column border border-3 mt-5 p-3" style={{width:550, borderRadius: "20px"}}>
-                {
-                    error?
-                    <p style={{margin:0}} className="text-danger ps-2" >{error}</p>
-                    :<></>
-                }
-                <form onSubmit={submithandler} className=" mt-4 d-flex justify-content-between">
-                        <input type={"text"} onChange={(e)=>setNewComment(e.target.value)} value={newComment} placeholder="Add Comment" style={{resize:"none", width:"410px", height:"55px",borderRadius:"20px"}} className="ps-3"/>
-                        <button type="submit" style={{border:"none", backgroundColor:"white", paddingRight:"8px" , borderRadius:"20px"}}><BiMailSend size={40}/></button>
-                </form>
-                <div className="d-flex flex-column align-self-start pt-3 overflow-auto" style={{maxHeight: 300}}>
-                    {
-                        comments.map((item,indx)=>{
-                            return<div key={indx} className="d-flex align-items-center mb-2">
-                                {
-                                    item.createdBy.userName === loggedUser.userName?
-                                    <div style={{fontSize:"13px"}} className="d-flex">
-                                        <Link to={`/myProfile`}><Avatar color={"rgb(126, 55, 148)"} size="50" round={true} name={`${loggedUser.firstName} ${loggedUser.lastName}`}/></Link>
-                                        <Link to={`/myProfile`} className="pt-3 ps-2 text-primary text-decoration-none">@{item.createdBy.userName}</Link>
-                                        <div className="pt-3 ps-2 text-light">{item.content}</div>
-                                    </div>
-                                        :
-                                    <div style={{fontSize:"13px"}} className="d-flex">
-                                        <Link to={`/user/${item.createdBy.userName}`}><Avatar color={"rgb(126, 55, 148)"} size="50" round={true} name={`${item.createdBy.firstName} ${item.createdBy.lastName}`}/></Link>
-                                        <Link to={`/user/${item.createdBy.userName}`} className="pt-3 ps-2 text-decoration-none text-primary">@{item.createdBy.userName}</Link>
-                                        <div className="pt-3 ps-2 text-light">{item.content}</div>
-                                    </div>
-                                }
+        <div className="post-feed-wrapper">
+            <div className="wrapper">
+                <div className="post-wrapper" style={{marginTop: "80px"}}>
+                    <div className="post">
+                        <Link className="avatar-icn" to={postUser.userName === loggedUser.userName? `/myProfile` : `/user/${postUser.userName}` }><Avatar color={"rgb(126, 55, 148)"} round={true} name={`${postUser.firstName} ${postUser.lastName}`} /></Link>
+                        <div className="post-inside">
+                            <div className="user-name">
+                                <div style={{marginRight: 5}}>{postUser.firstName} {postUser.lastName}</div>
+                                <Link className="handle" to={postUser.userName === loggedUser.userName? `/myProfile` : `/user/${postUser.userName}` }>@{postUser.userName}</Link>
                             </div>
-                        })
-                    }
+                            <div className="content">{post.content}</div>
+                            <div className="like-wrapper">
+                                {
+                                likeStatus === false?
+                                    <FcLikePlaceholder  size={35} onClick={likePost}>like post</FcLikePlaceholder>
+                                    :
+                                    <FcLike  size={35} onClick={unlikePost}>unlike Post</FcLike>
+                                }
+                                <p style={{margin: 0, marginLeft: "10px"}}>{likeNum} Likes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div >
+                    </div>
+                </div>
+                <div  className= 'comment-form-wrapper' >
+                    <div>
+                        <form className="comment-form" onSubmit={submithandler} >
+                                <textarea className="comment-area"  onChange={(e)=>setNewComment(e.target.value)} value={newComment} placeholder="Add Comment..." />
+                                <button className="comment-submit-button" type="submit">Comment</button>
+                        </form>
+                        {
+                            error?
+                            <p style={{color: "red", textAlign: "center"}}>{error}</p>
+                            :<></>
+                        }
+                    </div>
+                    <div className="post-feed" style={{backgroundColor: "rgba(0, 0, 0, 0.8)", borderRadius: "25px"}}>
+                        {
+                            comments.map((item,indx)=>{
+                                return<div key={indx} className="container">
+                                    <div className="post-wrapper comment" style={{backgroundColor: "transparent"}} >
+                                        <div className="post">
+                                            <Link className="avatar-icn" to={item.createdBy._id === loggedUser._id ? `/myProfile` : `/user/${item.createdBy.userName}`}><Avatar color={"rgb(126, 55, 148)"} round={true} name={`${item.createdBy.firstName} ${item.createdBy.lastName}`} /></Link>
+                                            <div className="post-inside">
+                                                <div className="user-name">
+                                                    <div style={{marginRight: 5}}>{item.createdBy.firstName} {item.createdBy.lastName}</div>
+                                                    <Link className="handle" to={item.createdBy._id === loggedUser._id ? `/myProfile` : `/user/${item.createdBy.userName}`}>@{item.createdBy.userName}</Link>
+                                                </div>
+                                                <div className="content">{item.content}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         </div>

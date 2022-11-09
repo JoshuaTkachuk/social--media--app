@@ -1,19 +1,36 @@
 .post-form{
+    /* border: solid;
+    border-radius: 35px;
+    background-color: black;
+    width: 550px; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50vh;
-    transform: translate(0%, -100%);
+    justify-content: flex-start;
+    margin-top: 10px;
+    /* padding: 50px;
+    padding-top: 90px;
+    height: 300px; */
+}
+.post-form-wrapper{
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .submit-button{
-    background-color: rgb(126, 55, 148);
+    background-color: black;
     color: white;
     margin-top: 20px;
     border-radius: 25px;
-    border: none;
     width: 387px;
     height: 40px;
     font-family: 'Poppins', sans-serif 
+}
+.submit-button:hover{
+    transition: .2s;
+    transform: scale(1.02);
+    cursor: pointer;
 }
 .form-inputs{
     display: flex;
@@ -29,4 +46,8 @@
     border-radius: 25px;
     height: 150px;
     padding: 20px;
+}
+.text-danger{
+    margin-top: 25px;
+    color: red;
 }

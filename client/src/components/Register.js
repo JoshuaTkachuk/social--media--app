@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import "../styles/register.css";
 
 const Register=()=>{
     const [email,setEmail] = useState("");
@@ -9,7 +10,7 @@ const Register=()=>{
     const [userName,setUserName] = useState("");
     const [firstName,setFirstName] = useState("");
     const [lastName,setLastName] = useState("");
-    const [errors,setErrors] = useState({})
+    const [errors,setErrors] = useState([])
     const navigate = useNavigate();
     
     const handleSubmit=(e)=>{
@@ -26,53 +27,49 @@ const Register=()=>{
             })
     }
 
-    return<div className="d-flex flex-column align-items-center mt-5">
-        <h1 className="text-white">Register</h1>
-        <form className=" bg-primary d-flex flex-column align-items-center justify-content-center border border-3 p-3" style={{width:400, height:"100%", borderRadius: 25}} onSubmit={handleSubmit}>
-        <label className="text-black">Email:</label>
-            {
-                errors.email?
-                <p className="text-danger">{errors.email.message}</p>:
-                <></>
-            }
-            <input style={{borderRadius: 10}} type={"text"} onChange={(e)=> setEmail(e.target.value)}></input>
-        <label className="text-black">First Name:</label>
-            {
-                errors.firstName?
-                <p className="text-danger">{errors.firstName.message}</p>:
-                <></>
-            }
-            <input style={{borderRadius: 10}} type={"text"} onChange={(e)=> setFirstName(e.target.value)}></input>
-            <label className="text-black">Last Name:</label>
-            {
-                errors.lastName?
-                <p className="text-danger">{errors.lastName.message}</p>:
-                <></>
-            }
-            <input style={{borderRadius: 10}} type={"text"} onChange={(e)=> setLastName(e.target.value)}></input>
-            <label className="text-black">user name:</label>
-            {
-                errors.userName?
-                <p className="text-danger">{errors.userName.message}</p>:
-                <></>
-            }
-            <input style={{borderRadius: 10}} type={"text"} onChange={(e)=> setUserName(e.target.value)}></input>
-            <label className="text-black">Password:</label>
-            {
-                errors.password?
-                <p className="text-danger">{errors.password.message}</p>:
-                <></>
-            }
-            <input style={{borderRadius: 10}} type={"text"} onChange={(e)=> setPassword(e.target.value)}></input>
-            <label className="text-black">confirm password:</label>
-            {
-                errors.confirmPassword?
-                <p className="text-danger">{errors.confirmPassword.message}</p>:
-                <></>
-            }
-            <input style={{borderRadius: 10}} type={"text"} onChange={(e)=> setConfirmPassword(e.target.value)}></input>
-            <input className="mt-2 border border-light border-2 bg-light text-dark" style={{borderRadius: 10}} type={"submit"}></input>
-        </form>
+    return<div className="login-wrapper">
+            <form className="login-form" style={{height:"30vh"}} onSubmit={handleSubmit}>
+            <h1 style={{color: "white"}}>Register</h1>
+            <div className= "first-last-name">
+                    
+                    <input className="login-input" placeholder="First Name" type={"text"} onChange={(e)=> setFirstName(e.target.value)}></input>
+                    
+                    <input className="login-input" placeholder="Last Name" type={"text"} onChange={(e)=> setLastName(e.target.value)}></input>
+            </div>
+                
+                <input  placeholder="Email" className="login-input" type={"email"} onChange={(e)=> setEmail(e.target.value)}></input>
+                
+                <input placeholder="Username" className="login-input" type={"text"} onChange={(e)=> setUserName(e.target.value)}></input>
+                
+                <input placeholder="Password" className="login-input" type={"password"} onChange={(e)=> setPassword(e.target.value)}></input>
+                
+                <input placeholder="Confirm Password" className="login-input" type={"password"} onChange={(e)=> setConfirmPassword(e.target.value)}></input>
+                <button className="submit" type={"submit"}>Register</button>
+            </form>
+            <div className="login-link">
+                <div style={{color: "white"}}>Already have an account?</div>
+                <a style={{color: "pink"}} href="/">Login</a>
+            </div>
+            <div className="errors">
+                {
+                    errors.firstName?<div className="error-message">{errors.firstName.message}</div>:<></>
+                }
+                {
+                    errors.lastName?<div className="error-message">{errors.lastName.message}</div>:<></>
+                }
+                {
+                    errors.userName?<div className="error-message">{errors.userName.message}</div>:<></>
+                }
+                {
+                    errors.email?<div className="error-message">{errors.email.message}</div>:<></>
+                }
+                {
+                    errors.password?<div className="error-message">{errors.password.message}</div>:<></>
+                }
+                {
+                    errors.confirmPassword?<div className="error-message">{errors.confirmPassword.message}</div>:<></>
+                }
+            </div>
     </div>
 }
 export default Register;

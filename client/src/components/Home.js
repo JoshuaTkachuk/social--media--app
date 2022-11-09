@@ -32,7 +32,7 @@ const Home=()=>{
     return(
         <div className="home-wrapper">
             <Navbar location={"home"}/>
-            <div>
+            <div className="post-feed-wrapper">
                 <div className="post-feed">
                 {
                     posts.length > 0 ?
@@ -42,10 +42,10 @@ const Home=()=>{
                                         <div className="post">
                                                     <Link className="avatar-icn" to={item.createdBy._id === loggedUser._id ? `/myProfile` : `/user/${item.createdBy.userName}`}><Avatar color={"rgb(126, 55, 148)"} round={true} name={`${item.createdBy.firstName} ${item.createdBy.lastName}`} /></Link>
                                                     <div className="post-inside">
-                                                    <div className="user-name">
-                                                        <div style={{marginRight: 5}}>{item.createdBy.firstName} {item.createdBy.lastName}</div>
-                                                        <Link className="handle" to={item.createdBy._id === loggedUser._id ? `/myProfile` : `/user/${item.createdBy.userName}`}>@{item.createdBy.userName}</Link>
-                                                    </div>
+                                                        <div className="user-name">
+                                                            <div style={{marginRight: 5}}>{item.createdBy.firstName} {item.createdBy.lastName}</div>
+                                                            <Link className="handle" to={item.createdBy._id === loggedUser._id ? `/myProfile` : `/user/${item.createdBy.userName}`}>@{item.createdBy.userName}</Link>
+                                                        </div>
                                                         <div className="content">{item.content}</div>
                                                         <p className="likes">{item.numLikes} Likes</p>
                                                     </div>

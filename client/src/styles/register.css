@@ -1,0 +1,26 @@
+.first-last-name{
+    display: flex;
+    align-items: center;
+    width: 390px;
+    justify-content: space-between;
+}
+.login-link{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-125%);
+    display: flex;
+}
+.errors{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}
+.error-message{
+    margin: 5px;
+}

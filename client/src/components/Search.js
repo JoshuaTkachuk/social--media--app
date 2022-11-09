@@ -42,22 +42,24 @@ const Search =()=>{
                 <input className='search-bar' type={"search"} placeholder={"Search Users"} onChange={(e)=> setSearch(e.target.value)}></input>
             </form>
         </div>
-        <div className='users-wrapper'>
-            {
-                users.length > 0?
-                    users.map((item,idx)=>{
-                        return<div key={idx}>
-                            <Link to={item._id === loggedUser._id ? `/myProfile` : `/user/${item.userName}`} className="user">
-                                <Avatar color={"rgb(126, 55, 148)"} round={true} size="75" name={`${item.firstName} ${item.lastName}`}/>
-                                <div className='user-words'>
-                                    <div className='text-light h5 m-0'>{item.firstName} {item.lastName}</div>
-                                    <div className='handle'>@{item.userName}</div>
-                                </div>
-                            </Link>
-                        </div>
-                    })
-                :null
-            }
+        <div className='users-outer-wrapper'>
+            <div className='users-wrapper'>
+                {
+                    users.length > 0?
+                        users.map((item,idx)=>{
+                            return<div key={idx}>
+                                <Link to={item._id === loggedUser._id ? `/myProfile` : `/user/${item.userName}`} className="user">
+                                    <Avatar color={"rgb(126, 55, 148)"} round={true} size="75" name={`${item.firstName} ${item.lastName}`}/>
+                                    <div className='user-words'>
+                                        <div className='text-light h5 m-0'>{item.firstName} {item.lastName}</div>
+                                        <div className='handle'>@{item.userName}</div>
+                                    </div>
+                                </Link>
+                            </div>
+                        })
+                    :null
+                }
+            </div>
         </div>
     </div>
 }

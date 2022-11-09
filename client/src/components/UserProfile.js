@@ -86,7 +86,7 @@ const UserProfile=()=>{
     return<div className="profile-wrapper">
         <Navbar/>
         <div className="profile">
-            <div className="sticky-username">
+            <div className="top-username">
                 <div className="name-following">
                     <h1 className="profile-name">{userName}</h1>
                     <div className="following-container">

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import "../styles/login.css"
 
 const Login=()=>{
     const [password,setPassword] = useState("");
@@ -20,19 +21,25 @@ const Login=()=>{
                 setErrors("invalid username or password")
             })
     }
-
-    return <div className="d-flex flex-column align-items-center  mt-5">
-        <h1 className="text-white">Login</h1>
-        <form className="d-flex flex-column align-items-center p-4 bg-primary  border border-3" style={{borderRadius: 25}} onSubmit={handleSubmit}>
-            {
-                errors?<p>{errors}</p>:<></>
-            }
-            <label>Email:</label>
-            <input type={"text"} onChange={(e)=> setEmail(e.target.value)} style={{borderRadius: 10}}></input>
-            <label>Password:</label>
-            <input type={"text"} onChange={(e)=> setPassword(e.target.value)} style={{borderRadius: 10}}></input>
-            <input className="mt-2 border border-light border-2 bg-light text-dark" style={{borderRadius: 10}} type={"submit"}></input>
-        </form>
+    return <div className="login-wrapper">
+    <form className="login-form" onSubmit={handleSubmit}>
+        <h1 style={{color: "white"}}>Login</h1>
+        <div className="inputs">
+            <input className="login-input" type={"text"} placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
+            <input className="login-input" type={"password"} placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
+            <button className="submit" type={"submit"}>Login</button>
+        </div>
+        
+    </form>
+    <div className="login-link">
+        <div style={{color: "white"}}>Dont have an account?</div>
+        <a style={{color: "pink"}} href="/register">Register</a>
     </div>
+    <div className="errors">
+        {
+            errors?<p>{errors}</p>:<></>
+        }
+    </div>
+</div>
 }
 export default Login;

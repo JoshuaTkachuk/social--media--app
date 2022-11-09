@@ -36,8 +36,8 @@ const PostForm=()=>{
     }
     return<div className="post-form-wrapper">
         <Navbar location={"post"}/>
+        <h1 className="profile-name" style={{color: "white"}}>New Post</h1>
         <form onSubmit={submithandler} className="post-form">
-            <h1>New Post</h1>
             <div className="form-inputs">
                 <textarea className="text-area" placeholder="what's on your mind?" onChange={(e)=>setContent(e.target.value)}/>
                 <button type="submit" className="submit-button">Post</button>

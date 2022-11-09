@@ -1,6 +1,6 @@
 .navbar-wrapper{
     width: 100vw;
-    background-color: white;
+    background-color: black;
     position: sticky;
     top: 0;
     display: flex;
@@ -9,7 +9,7 @@
 }
 .navbar-item{
     text-decoration: none;
-    color: black;
+    color: white;
     display: flex;
     align-items: center;
     padding: 20px;
@@ -29,3 +29,4 @@
 .icon{
     margin-right: 5px;
 }
+

@@ -11,7 +11,7 @@
 .delete{
     margin-left: 10px;
     text-decoration: none;
-    color: red;
+    color: rgba(255, 0, 0, 0.938);
 }
 .delete:hover{
     color: rgb(136, 0, 0)
@@ -31,6 +31,7 @@
     height: 30px;
 }
 .profile-name{
+    color: white;
     font-size: 70px;
     margin: 0;
 }
@@ -38,14 +39,11 @@
     text-decoration: none;
     color: rgb(126, 55, 148) ;
 }
-.sticky-username{
+.top-username{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
-    position:sticky;
-    top: 80px;
-    background-color: rgb(221, 221, 221);
+    width: 850px;
 }
 .name-following{
     display: flex;
@@ -56,4 +54,16 @@
     flex-direction: column;
     width: 125px;
     align-items: flex-end;
+}
+.myProfile-wrapper{
+    display: flex;
+    flex-direction: column;
+    max-height:calc(100vh - 80px);
+    overflow-y: scroll;
+}
+.liked-posts-wrapper{
+    display: flex;
+    flex-direction: column;
+    max-height:calc(100vh - 186px);
+    overflow-y: scroll;
 }
