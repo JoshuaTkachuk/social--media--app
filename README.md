@@ -1,5 +1,6 @@
 # social--media--app
-https://social-media-app-project-mern.herokuapp.com/ --
+https://social-media-app-project-mern.herokuapp.com/
+
 Login Page:
 - From here the user can either login or register if they don't have an account yet.
 - Both the Login and registration pages implement validations and error handeling.
